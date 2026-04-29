@@ -11,7 +11,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="flex justify-between items-center bg-blue-600 text-white p-4">
+    <div className="flex justify-between items-center bg-blue-600 text-white p-4 ">
       <h1 className="text-lg font-bold">Voucher App</h1>
 
       <div className="flex items-center gap-4">

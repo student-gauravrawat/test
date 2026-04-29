@@ -7,6 +7,7 @@ const Login = () => {
   const { login } = useAuth();
   const navigate = useNavigate();
 
+  // when it reurns true i show dashboard page  
   const handleLogin = () => {
     const success = login(form.username, form.password);
     if (success) navigate("/dashboard");

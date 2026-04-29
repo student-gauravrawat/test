@@ -2,13 +2,14 @@ import { useState } from "react";
 import { useVoucher } from "../context/VoucherContext";
 import { useNavigate } from "react-router-dom";
 import VoucherRow from "../component/VoucherRow";
+import Navbar from "../component/Navbar";
 
 const CreateVoucher = () => {
   const { addVoucher } = useVoucher();
   const navigate = useNavigate();
 
   const [type, setType] = useState("Payment");
-  const [narration, setNarration] = useState("On Account");
+  const [account, setAccount] = useState("On Account");
 
   const [rows, setRows] = useState([
     {
@@ -19,7 +20,7 @@ const CreateVoucher = () => {
     },
   ]);
 
-  // ➕ Add Row
+  // function for Adding Row
   const addRow = () => {
     setRows([
       ...rows,
@@ -27,22 +28,22 @@ const CreateVoucher = () => {
     ]);
   };
 
-  // ❌ Delete Row
+  // function for Deleting Row and i am filtering by index number
   const deleteRow = (index) => {
     setRows(rows.filter((_, i) => i !== index));
   };
 
-  // 🧮 Total
+  // it adds all amount and returns total
   const total = rows.reduce((sum, r) => sum + Number(r.amount || 0), 0);
 
   const totalDebit = type === "Payment" ? total : 0;
   const totalCredit = type === "Received" ? total : 0;
 
-  // 💾 Submit
+  // function Submit
   const handleSubmit = () => {
     addVoucher({
       type,
-      narration,
+      account,
       rows,
       totalDebit,
       totalCredit,
@@ -54,7 +55,8 @@ const CreateVoucher = () => {
 
   return (
     <div className="p-4">
-      <h2 className="text-xl mb-4">Voucher Entry</h2>
+    <Navbar/>
+      <h2 className="text-xl mb-4 mt-4">Voucher Entry</h2>
 
       {/* Top Fields */}
       <div className="flex gap-4 mb-4">
@@ -69,9 +71,9 @@ const CreateVoucher = () => {
 
         <input
           className="border p-2"
-          value={narration}
-          onFocus={() => setNarration("")}
-          onChange={(e) => setNarration(e.target.value)}
+          value={account}
+          onFocus={() => setAccount("")}
+          onChange={(e) => setAccount(e.target.value)}
         />
       </div>
 

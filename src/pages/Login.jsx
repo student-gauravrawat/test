@@ -15,29 +15,35 @@ const Login = () => {
   };
 
   return (
-    <div className="h-screen flex items-center justify-center">
-      <div className="p-6 bg-white shadow rounded w-80">
-        <h2 className="text-xl mb-4 text-center">Login</h2>
+ <div className="h-screen flex items-center justify-center bg-gradient-to-br from-slate-50 to-blue-100">
+      <div className="p-10 bg-white shadow-2xl rounded-3xl w-96 border border-white/50 backdrop-blur-sm">
+        <h2 className="text-3xl font-extrabold mb-8 text-center text-slate-800 tracking-tight">
+          Welcome Back
+        </h2>
 
         <input
           placeholder="Username"
-          className="border p-2 mb-2 w-full"
-          onChange={(e) => setForm({ ...form, username: e.target.value })}
+          className="border border-slate-200 bg-slate-50/50 p-3 mb-4 w-full rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400"
+          onChange={(e) => setForm({ ...form, username: e.target.value })} //[cite: 2]
         />
 
         <input
           type="password"
           placeholder="Password"
-          className="border p-2 mb-2 w-full"
-          onChange={(e) => setForm({ ...form, password: e.target.value })}
+          className="border border-slate-200 bg-slate-50/50 p-3 mb-6 w-full rounded-xl focus:ring-4 focus:ring-blue-500/20 focus:border-blue-500 outline-none transition-all duration-300 placeholder:text-slate-400"
+          onChange={(e) => setForm({ ...form, password: e.target.value })} //[cite: 2]
         />
 
         <button
-          onClick={handleLogin}
-          className="bg-blue-500 text-white px-4 py-2 w-full"
+          onClick={handleLogin} //[cite: 2]
+          className="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3.5 px-4 w-full rounded-xl shadow-lg shadow-blue-200 active:scale-[0.97] transition-all duration-200"
         >
           Login
         </button>
+
+        <p className="mt-8 text-center text-sm text-slate-500">
+          Secure authentication for your account.
+        </p>
       </div>
     </div>
   );

@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useVoucher } from "../context/VoucherContext";
 import { useState, useEffect } from "react";
+import Navbar from "../component/Navbar";
 
 const EditVoucher = () => {
   const { id } = useParams();
@@ -20,22 +21,25 @@ const EditVoucher = () => {
     updateVoucher(voucher);
     navigate("/dashboard");
   };
+  console.log(vouchers)
 
   return (
     <div className="p-4">
-      <h2>Edit Voucher</h2>
+    <Navbar/>
+      <h2 className="mt-5 font-bold">Edit Voucher</h2>
 
+      <label>Update Account Number:</label>
       <input
-        value={voucher.narration}
+        value={voucher.account}
         onChange={(e) =>
-          setVoucher({ ...voucher, narration: e.target.value })
+          setVoucher({ ...voucher, account: e.target.value })
         }
-        className="border p-2"
+        className="border p-2 ml-4"
       />
 
       <button
         onClick={handleSubmit}
-        className="bg-green-500 text-white px-4 py-2 mt-2"
+        className="bg-green-500 text-white px-4 py-2 mt-2 ml-2"
       >
         Update
       </button>
